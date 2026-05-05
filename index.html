@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allika puhkemaja – Lahemaa rahvuspark</title>
+  <meta name="description" content="Allika puhkemaja Lahemaa rahvuspargis. Majutus, seminarid, koolitused. Koljaku küla, Haljala vald." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f4ede0;
+      --paper:   #fffcf5;
+      --ink:     #1c1a14;
+      --muted:   #7a6e5f;
+      --green:   #3a6b35;
+      --green-d: #1e3d1a;
+      --gold:    #c8922a;
+      --border:  #d9cdb8;
+      --max:     1040px;
+      --r:       12px;
+      --font-h:  'Caveat', cursive;
+      --font-b:  'Nunito', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-b);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── Päis ── */
+    header {
+      position: relative;
+      background: var(--green-d);
+      padding: 0 2rem;
+      overflow: hidden;
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.1rem 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand-name {
+      font-family: var(--font-h);
+      font-size: 1.7rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .header-trees {
+      position: absolute;
+      right: 0; bottom: 0;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      background: var(--green-d);
+      padding: 4rem 2rem 6rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 60px;
+      background: var(--bg);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hero-doodle {
+      position: absolute;
+      opacity: 0.2;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .hero-doodle.left  { left: 3rem; }
+    .hero-doodle.right { right: 3rem; transform: translateY(-50%) scaleX(-1); }
+
+    .hero h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      position: relative;
+      z-index: 1;
+    }
+
+    .underline-wrap { position: relative; display: inline-block; }
+    .underline-wrap::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -5px; right: 0; height: 11px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 Q30 2 60 8 Q90 14 120 7 Q150 2 180 8 Q195 10 198 8' stroke='%23c8922a' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/Svg%3E") center/100% auto no-repeat;
+    }
+
+    .hero-slogan {
+      font-family: var(--font-h);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Üldine sektsioonistruktuur ── */
+    .section { padding: 3.5rem 2rem; }
+    .section.alt { background: var(--paper); }
+    .inner { max-width: var(--max); margin: 0 auto; }
+
+    .section-eyebrow {
+      font-family: var(--font-h);
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-family: var(--font-h);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--green-d);
+      line-height: 1.2;
+      margin-bottom: 1.6rem;
+    }
+
+    /* ── Ajalugu ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      font-size: 0.97rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* Faktikastid */
+    .fact-stack { display: flex; flex-direction: column; gap: 1rem; }
+
+    .fact-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.1rem 1.3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .fact-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      background: #edf4eb;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid #c4dbbf;
+      margin-top: 1px;
+    }
+
+    .fact-icon svg {
+      width: 17px; height: 17px;
+      stroke: var(--green);
+      fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .fact-body strong {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .fact-body span {
+      font-size: 0.96rem;
+      color: var(--ink);
+    }
+
+    /* ── Broneerimisteatega blokk ── */
+    .notice-bar {
+      background: #fff8ee;
+      border: 1.5px solid var(--gold);
+      border-radius: var(--r);
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .notice-bar svg {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      stroke: var(--gold);
+      fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+      margin-top: 2px;
+    }
+
+    .notice-bar p {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+
+    .notice-bar strong { color: var(--gold); }
+
+    /* ── Majutus ── */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .room-card {
+      background: var(--paper);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.4rem;
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .room-card:hover {
+      box-shadow: 0 6px 24px rgba(30,61,26,0.1);
+      transform: translateY(-2px);
+    }
+
+    .room-icon {
+      width: 42px; height: 42px;
+      background: #edf4eb;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid #c4dbbf;
+      margin-bottom: 1rem;
+    }
+
+    .room-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--green);
+      fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .room-name {
+      font-family: var(--font-h);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--green-d);
+      margin-bottom: 0.5rem;
+    }
+
+    .room-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* Doodle tärnid tubade sektsioonis */
+    .rooms-doodle {
+      text-align: right;
+      margin-bottom: 1.2rem;
+      opacity: 0.35;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* ── Kontakt ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: var(--paper);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .contact-card .leaf-doodle {
+      position: absolute;
+      top: -15px; right: 18px;
+      pointer-events: none;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.05rem 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .icon-wrap {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      background: #edf4eb;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid #c4dbbf;
+    }
+
+    .icon-wrap svg {
+      width: 17px; height: 17px;
+      stroke: var(--green);
+      fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .info-body dt {
+      font-size: 0.68rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .info-body dd {
+      font-size: 0.96rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .gps-decimal {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .map-wrap {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      height: 100%;
+      min-height: 300px;
+    }
+
+    .map-wrap iframe {
+      width: 100%; height: 100%;
+      border: 0; display: block;
+    }
+
+    /* ── Jalus ── */
+    footer {
+      background: var(--green-d);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-brand {
+      font-family: var(--font-h);
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.82);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-trees {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.07;
+      pointer-events: none;
+    }
+
+    /* ── Animatsioon ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate { animation: fadeUp 0.55s ease both; }
+    .animate-d1 { animation-delay: 0.1s; }
+    .animate-d2 { animation-delay: 0.2s; }
+
+    /* ── Mobiil ── */
+    @media (max-width: 768px) {
+      .about-grid,
+      .contact-grid  { grid-template-columns: 1fr; }
+      .rooms-grid    { grid-template-columns: 1fr 1fr; }
+      .hero          { padding: 2.5rem 1.5rem 5rem; }
+      .hero-doodle   { display: none; }
+      .section       { padding: 2.5rem 1.25rem; }
+      .map-wrap      { min-height: 220px; }
+    }
+
+    @media (max-width: 500px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Päis -->
+<header>
+  <svg class="header-trees" width="300" height="72" viewBox="0 0 300 72" fill="none">
+    <line x1="28"  y1="72" x2="28"  y2="28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="28,4 8,36 48,36"    fill="#fff"/>
+    <polygon points="28,20 10,44 46,44"  fill="#fff"/>
+    <line x1="74"  y1="72" x2="74"  y2="38" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="74,18 60,46 88,46"  fill="#fff"/>
+    <polygon points="74,32 61,52 87,52"  fill="#fff"/>
+    <line x1="120" y1="72" x2="120" y2="26" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="120,2 100,36 140,36"   fill="#fff"/>
+    <polygon points="120,18 102,44 138,44"  fill="#fff"/>
+    <line x1="162" y1="72" x2="162" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="162,16 148,44 176,44"  fill="#fff"/>
+    <line x1="204" y1="72" x2="204" y2="28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="204,4 184,36 224,36"   fill="#fff"/>
+    <polygon points="204,20 186,44 222,44"  fill="#fff"/>
+    <line x1="248" y1="72" x2="248" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="248,14 234,44 262,44"  fill="#fff"/>
+    <polygon points="248,30 235,52 261,52"  fill="#fff"/>
+    <line x1="284" y1="72" x2="284" y2="30" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="284,8 268,40 300,40"   fill="#fff"/>
+  </svg>
+
+  <div class="header-inner">
+    <div>
+      <span class="brand-name">Allika puhkemaja</span>
+      <span class="brand-sub">Lahemaa rahvuspark</span>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <svg class="hero-doodle left" width="100" height="160" viewBox="0 0 100 160" fill="none">
+    <line x1="28" y1="160" x2="28" y2="58" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="28,20 6,66 50,66"  fill="#fff"/>
+    <polygon points="28,44 8,80 48,80"  fill="#fff"/>
+    <line x1="72" y1="160" x2="72" y2="78" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="72,50 58,84 86,84"  fill="#fff"/>
+    <polygon points="72,64 59,92 85,92"  fill="#fff"/>
+    <text x="52" y="36" font-size="11" fill="#c8922a" opacity="0.8">✦</text>
+  </svg>
+
+  <svg class="hero-doodle right" width="100" height="160" viewBox="0 0 100 160" fill="none">
+    <line x1="28" y1="160" x2="28" y2="58" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="28,20 6,66 50,66"  fill="#fff"/>
+    <polygon points="28,44 8,80 48,80"  fill="#fff"/>
+    <line x1="72" y1="160" x2="72" y2="78" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="72,50 58,84 86,84"  fill="#fff"/>
+    <polygon points="72,64 59,92 85,92"  fill="#fff"/>
+    <text x="6" y="50" font-size="9" fill="#fff" opacity="0.6">✦</text>
+  </svg>
+
+  <h1><span class="underline-wrap">Allika puhkemaja</span></h1>
+  <p class="hero-slogan">Puhkus looduse südames — Lahemaal</p>
+</div>
+
+
+<!-- Ajalugu -->
+<section class="section about-section">
+  <div class="inner">
+    <div class="about-grid animate">
+      <div class="about-body">
+        <p class="section-eyebrow">✦ Meie lugu</p>
+        <h2 class="section-title">Üle 130 aasta ajalugu Lahemaa südames</h2>
+        <p>Allika puhkemaja asub Lahemaa rahvuspargis, 3 kilomeetrit Võsult Haljala poole. Maja on ehitatud 1890. aastal metsavahi kordoniks — nõukogude ajal tegutses siin Käsmu metskonna lasteaed. Puhkemajana on see avatud alates 2010. aastast.</p>
+        <p>Maja pakub rahulikku ja looduslähedast keskkonda nii puhkajatele kui ka koolituste ja seminaride korraldajatele.</p>
+      </div>
+
+      <div class="fact-stack animate animate-d1">
+        <div class="fact-card">
+          <div class="fact-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="fact-body">
+            <strong>Ehitatud</strong>
+            <span>1890. aastal — metsavahi kordon</span>
+          </div>
+        </div>
+
+        <div class="fact-card">
+          <div class="fact-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <div class="fact-body">
+            <strong>Puhkemajana avatud</strong>
+            <span>Alates 2010. aastast</span>
+          </div>
+        </div>
+
+        <div class="fact-card">
+          <div class="fact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="fact-body">
+            <strong>Asukoht</strong>
+            <span>Lahemaa rahvuspark, 3 km Võsust</span>
+          </div>
+        </div>
+
+        <div class="fact-card">
+          <div class="fact-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="fact-body">
+            <strong>Mahutavus</strong>
+            <span>Voodikohti kokku 16, tube 7</span>
+          </div>
+        </div>
+
+        <div class="notice-bar">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p>Maja on avatud <strong>vaid ettetellimisel.</strong> Kui planeerid koolitust, seminari või suuremat üritust — saada päring aadressile <strong>info@sillaallika.ee</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Majutusvõimalused -->
+<section class="section alt">
+  <div class="inner">
+    <p class="section-eyebrow">✦ Majutus</p>
+    <h2 class="section-title">Majutusvõimalused</h2>
+
+    <div class="rooms-doodle" aria-hidden="true">
+      <svg width="80" height="22" viewBox="0 0 80 22">
+        <text x="0"  y="16" font-size="14" fill="#3a6b35">✦</text>
+        <text x="22" y="20" font-size="10" fill="#c8922a">✦</text>
+        <text x="42" y="14" font-size="8"  fill="#3a6b35">✦</text>
+        <text x="60" y="18" font-size="12" fill="#c8922a">✦</text>
+      </svg>
+    </div>
+
+    <div class="rooms-grid">
+
+      <!-- Kahene tuba -->
+      <div class="room-card animate">
+        <div class="room-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <p class="room-name">Kahene tuba</p>
+        <p class="room-desc">Eraldi voodid. Toas televiisor, külmik, dush, WC.</p>
+      </div>
+
+      <!-- Kolmene tuba -->
+      <div class="room-card animate animate-d1">
+        <div class="room-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <p class="room-name">Kolmene tuba</p>
+        <p class="room-desc">Eraldi voodid. Toas televiisor, külmik, dush, WC.</p>
+      </div>
+
+      <!-- Kahetoaline sviit -->
+      <div class="room-card animate animate-d2">
+        <div class="room-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <p class="room-name">Kahetoaline sviit</p>
+        <p class="room-desc">Suure voodiga magamistuba, vannitoas mullivann. Elutoas televiisor, külmik, kirjutuslaud, nurgadiivan.</p>
+      </div>
+
+      <!-- Terve maja -->
+      <div class="room-card animate">
+        <div class="room-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <p class="room-name">Terve maja</p>
+        <p class="room-desc">Voodikohti kokku 16. Tube 7. Suur välisrõdu hommikukohvi joomiseks, seminariruum, WiFi. Soovi korral toitlustamine ettetellimisel.</p>
+      </div>
+
+      <!-- Terve maja koos territooriumiga -->
+      <div class="room-card animate animate-d1">
+        <div class="room-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/><circle cx="18" cy="20" r="3"/><path d="M12 6v3"/></svg>
+        </div>
+        <p class="room-name">Terve maja koos territooriumiga</p>
+        <p class="room-desc">Voodikohti 16. Tube 7. Avar välisrõdu, seminariruum, WiFi. Välisteks aktiviteetideks maja ümber avar muruväljak.</p>
+      </div>
+
+      <!-- Terve maja + saun -->
+      <div class="room-card animate animate-d2">
+        <div class="room-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 22h16"/><path d="M10 22V8l-6 3"/><path d="M20 22V8l-6-3-4 2"/><path d="M2 22l10-10 10 10"/></svg>
+        </div>
+        <p class="room-name">Terve maja + saun ja territoorium</p>
+        <p class="room-desc">Voodikohti 16. Tube 7. Avar välisrõdu, seminariruum, WiFi. Maja ümber avar muruväljak välisteks aktiviteetideks. Eraldi saunamaja mõnusa istumisruumi ja välisterrassiga.</p>
+      </div>
+
+    </div>
+
+    <p style="margin-top:1.5rem;font-size:0.88rem;color:var(--muted);text-align:center">
+      Tubade broneerimiseks ja lisateabe saamiseks kirjuta: <strong style="color:var(--ink)">info@sillaallika.ee</strong>
+    </p>
+  </div>
+</section>
+
+
+<!-- Kontakt ja kaart -->
+<section class="section">
+  <div class="inner">
+    <p class="section-eyebrow">✦ Leia meid üles</p>
+    <h2 class="section-title">Kontakt</h2>
+
+    <div class="contact-grid">
+      <div class="contact-card animate">
+        <svg class="leaf-doodle" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 38 Q4 24 10 8 Q20 1 32 10 Q38 24 20 38Z" stroke="#3a6b35" stroke-width="1.4" fill="#edf4eb"/>
+          <path d="M20 38 Q20 20 20 8"  stroke="#3a6b35" stroke-width="1" stroke-dasharray="2,2.5" stroke-linecap="round"/>
+          <path d="M20 22 Q15 18 13 13" stroke="#3a6b35" stroke-width="0.8" stroke-linecap="round"/>
+          <path d="M20 26 Q25 22 27 17" stroke="#3a6b35" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+
+        <!-- E-post -->
+        <div class="info-row">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <dl class="info-body">
+            <dt>E-post</dt>
+            <dd>info@sillaallika.ee</dd>
+          </dl>
+        </div>
+
+        <!-- Aadress -->
+        <div class="info-row">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <dl class="info-body">
+            <dt>Aadress</dt>
+            <dd>Lasteaia, Koljaku küla<br>45419 Haljala vald<br>Lääne-Viru maakond</dd>
+          </dl>
+        </div>
+
+        <!-- GPS -->
+        <div class="info-row">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="9" stroke-dasharray="3 2"/></svg>
+          </div>
+          <dl class="info-body">
+            <dt>GPS koordinaadid</dt>
+            <dd>
+              <span style="font-weight:600">59°33′26″N &nbsp;25°59′33″E</span>
+              <div class="gps-decimal">59.557222, 25.992500</div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Kaart -->
+      <div class="map-wrap animate animate-d1">
+        <iframe
+          title="Allika puhkemaja asukoht kaardil"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=59.557222,25.992500&z=14&output=embed"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Jalus -->
+<footer>
+  <svg class="footer-trees" width="600" height="70" viewBox="0 0 600 70" fill="none">
+    <line x1="40"  y1="70" x2="40"  y2="26" stroke="#fff" stroke-width="3"/>
+    <polygon points="40,2 20,34 60,34"  fill="#fff"/>
+    <polygon points="40,18 22,42 58,42" fill="#fff"/>
+    <line x1="95"  y1="70" x2="95"  y2="34" stroke="#fff" stroke-width="2.5"/>
+    <polygon points="95,14 80,42 110,42"  fill="#fff"/>
+    <polygon points="95,28 81,50 109,50"  fill="#fff"/>
+    <line x1="148" y1="70" x2="148" y2="24" stroke="#fff" stroke-width="3"/>
+    <polygon points="148,2 128,34 168,34"  fill="#fff"/>
+    <polygon points="148,18 130,44 166,44" fill="#fff"/>
+    <line x1="198" y1="70" x2="198" y2="34" stroke="#fff" stroke-width="2"/>
+    <polygon points="198,14 184,42 212,42" fill="#fff"/>
+    <line x1="245" y1="70" x2="245" y2="26" stroke="#fff" stroke-width="2.5"/>
+    <polygon points="245,4 227,38 263,38"   fill="#fff"/>
+    <polygon points="245,20 228,46 262,46"  fill="#fff"/>
+    <line x1="295" y1="70" x2="295" y2="34" stroke="#fff" stroke-width="2"/>
+    <polygon points="295,14 281,42 309,42"  fill="#fff"/>
+    <line x1="342" y1="70" x2="342" y2="24" stroke="#fff" stroke-width="3"/>
+    <polygon points="342,2 322,34 362,34"   fill="#fff"/>
+    <polygon points="342,18 324,44 360,44"  fill="#fff"/>
+    <line x1="392" y1="70" x2="392" y2="34" stroke="#fff" stroke-width="2"/>
+    <polygon points="392,14 378,42 406,42"  fill="#fff"/>
+    <line x1="438" y1="70" x2="438" y2="26" stroke="#fff" stroke-width="2.5"/>
+    <polygon points="438,4 420,38 456,38"   fill="#fff"/>
+    <polygon points="438,20 422,46 454,46"  fill="#fff"/>
+    <line x1="488" y1="70" x2="488" y2="34" stroke="#fff" stroke-width="2"/>
+    <polygon points="488,14 474,42 502,42"  fill="#fff"/>
+    <line x1="534" y1="70" x2="534" y2="26" stroke="#fff" stroke-width="2.5"/>
+    <polygon points="534,4 516,38 552,38"   fill="#fff"/>
+    <polygon points="534,20 518,46 550,46"  fill="#fff"/>
+    <line x1="578" y1="70" x2="578" y2="32" stroke="#fff" stroke-width="2"/>
+    <polygon points="578,12 562,42 594,42"  fill="#fff"/>
+  </svg>
+  <span class="footer-brand">Allika puhkemaja</span>
+  <p>© <span id="year"></span> &nbsp;·&nbsp; info@sillaallika.ee &nbsp;·&nbsp; Koljaku küla, Lahemaa</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
