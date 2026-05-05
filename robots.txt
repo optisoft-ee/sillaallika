@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sillaallika.ee/sitemap.xml
