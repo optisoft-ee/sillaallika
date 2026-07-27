@@ -37,7 +37,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Päis ── */
     header {
       position: relative;
       background: var(--green-d);
@@ -79,7 +78,6 @@
       pointer-events: none;
     }
 
-    /* ── Hero ── */
     .hero {
       position: relative;
       background: var(--green-d);
@@ -134,7 +132,6 @@
       z-index: 1;
     }
 
-    /* ── Üldine sektsioonistruktuur ── */
     .section { padding: 3.5rem 2rem; }
     .section.alt { background: var(--paper); }
     .inner { max-width: var(--max); margin: 0 auto; }
@@ -156,7 +153,6 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ── Ajalugu ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -172,7 +168,6 @@
     }
     .about-body p:last-child { margin-bottom: 0; }
 
-    /* Faktikastid */
     .fact-stack { display: flex; flex-direction: column; gap: 1rem; }
 
     .fact-card {
@@ -217,7 +212,6 @@
       color: var(--ink);
     }
 
-    /* ── Broneerimisteatega blokk ── */
     .notice-bar {
       background: #fff8ee;
       border: 1.5px solid var(--gold);
@@ -246,7 +240,6 @@
 
     .notice-bar strong { color: var(--gold); }
 
-    /* ── Majutus ── */
     .rooms-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -297,7 +290,6 @@
       color: var(--muted);
     }
 
-    /* Doodle tärnid tubade sektsioonis */
     .rooms-doodle {
       text-align: right;
       margin-bottom: 1.2rem;
@@ -306,7 +298,130 @@
       line-height: 1;
     }
 
-    /* ── Kontakt ── */
+    /* ── Galerii ── */
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .filter-btn {
+      font-family: var(--font-b);
+      font-weight: 600;
+      font-size: 0.85rem;
+      background: var(--paper);
+      color: var(--green-d);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 0.45rem 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--green);
+    }
+
+    .filter-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .gallery-item {
+      background: var(--paper);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      padding: 0.5rem 0.5rem 0.7rem;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      opacity: 0;
+      transform: scale(0.97);
+      animation: fadeUp 0.45s ease forwards;
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 6px 24px rgba(30, 61, 26, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: calc(var(--r) - 4px);
+      display: block;
+    }
+
+    .gallery-item.hidden { display: none; }
+
+    .gallery-empty {
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--font-h);
+      font-size: 1.3rem;
+      padding: 2rem 0;
+      display: none;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 61, 26, 0.94);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1.25rem;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: min(90vw, 900px);
+      max-height: 75vh;
+      border-radius: var(--r);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-caption {
+      font-family: var(--font-h);
+      color: #fff;
+      font-size: 1.4rem;
+      margin-top: 0.9rem;
+    }
+
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      font-family: var(--font-b);
+      line-height: 1;
+      padding: 0.6rem;
+      transition: color 0.2s ease;
+    }
+
+    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+      color: var(--gold);
+    }
+
+    .lightbox-close { top: 1rem; right: 1.25rem; }
+    .lightbox-prev  { left: 0.75rem; top: 50%; transform: translateY(-50%); font-size: 2.6rem; }
+    .lightbox-next  { right: 0.75rem; top: 50%; transform: translateY(-50%); font-size: 2.6rem; }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -387,7 +502,6 @@
       border: 0; display: block;
     }
 
-    /* ── Jalus ── */
     footer {
       background: var(--green-d);
       color: rgba(255,255,255,0.45);
@@ -414,7 +528,6 @@
       pointer-events: none;
     }
 
-    /* ── Animatsioon ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -424,7 +537,6 @@
     .animate-d1 { animation-delay: 0.1s; }
     .animate-d2 { animation-delay: 0.2s; }
 
-    /* ── Mobiil ── */
     @media (max-width: 768px) {
       .about-grid,
       .contact-grid  { grid-template-columns: 1fr; }
@@ -435,6 +547,12 @@
       .map-wrap      { min-height: 220px; }
     }
 
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
+      .gallery-item img { height: 110px; }
+      .lightbox-prev, .lightbox-next { font-size: 2rem; }
+    }
+
     @media (max-width: 500px) {
       .rooms-grid { grid-template-columns: 1fr; }
     }
@@ -442,7 +560,6 @@
 </head>
 <body>
 
-<!-- Päis -->
 <header>
   <svg class="header-trees" width="300" height="72" viewBox="0 0 300 72" fill="none">
     <line x1="28"  y1="72" x2="28"  y2="28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
@@ -470,7 +587,6 @@
   </div>
 </header>
 
-<!-- Hero -->
 <div class="hero">
   <svg class="hero-doodle left" width="100" height="160" viewBox="0 0 100 160" fill="none">
     <line x1="28" y1="160" x2="28" y2="58" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
@@ -497,7 +613,6 @@
 </div>
 
 
-<!-- Ajalugu -->
 <section class="section about-section">
   <div class="inner">
     <div class="about-grid animate">
@@ -559,7 +674,6 @@
 </section>
 
 
-<!-- Majutusvõimalused -->
 <section class="section alt">
   <div class="inner">
     <p class="section-eyebrow">✦ Majutus</p>
@@ -576,60 +690,48 @@
 
     <div class="rooms-grid">
 
-      <!-- Kahene tuba -->
       <div class="room-card animate">
         <div class="room-icon">
-          <!-- Voodi kahe padjaga -->
           <svg viewBox="0 0 24 24"><path d="M2 9V19"/><path d="M22 9V19"/><path d="M2 14h20"/><path d="M2 9a5 5 0 015-5h10a5 5 0 015 5"/><rect x="6" y="9" width="4" height="3" rx="1"/><rect x="14" y="9" width="4" height="3" rx="1"/></svg>
         </div>
         <p class="room-name">Kahene tuba</p>
         <p class="room-desc">Eraldi voodid. Toas televiisor, külmik, dush, WC.</p>
       </div>
 
-      <!-- Kolmene tuba -->
       <div class="room-card animate animate-d1">
         <div class="room-icon">
-          <!-- Kolm inimest -->
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
         <p class="room-name">Kolmene tuba</p>
         <p class="room-desc">Eraldi voodid. Toas televiisor, külmik, dush, WC.</p>
       </div>
 
-      <!-- Kahetoaline sviit -->
       <div class="room-card animate animate-d2">
         <div class="room-icon">
-          <!-- Täht — luksus -->
           <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
         </div>
         <p class="room-name">Kahetoaline sviit</p>
         <p class="room-desc">Suure voodiga magamistuba, vannitoas mullivann. Elutoas televiisor, külmik, kirjutuslaud, nurgadiivan.</p>
       </div>
 
-      <!-- Terve maja -->
       <div class="room-card animate">
         <div class="room-icon">
-          <!-- Maja -->
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
         </div>
         <p class="room-name">Terve maja</p>
         <p class="room-desc">Voodikohti kokku 16. Tube 7. Suur välisrõdu hommikukohvi joomiseks, seminariruum, WiFi. Soovi korral toitlustamine ettetellimisel.</p>
       </div>
 
-      <!-- Terve maja koos territooriumiga -->
       <div class="room-card animate animate-d1">
         <div class="room-icon">
-          <!-- Maja + puu (territoorium) -->
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/><path d="M20 6c0 2.5-2 4-2 4s-2-1.5-2-4a2 2 0 014 0z"/><line x1="18" y1="10" x2="18" y2="13"/></svg>
         </div>
         <p class="room-name">Terve maja koos territooriumiga</p>
         <p class="room-desc">Voodikohti 16. Tube 7. Avar välisrõdu, seminariruum, WiFi. Välisteks aktiviteetideks maja ümber avar muruväljak.</p>
       </div>
 
-      <!-- Terve maja + saun -->
       <div class="room-card animate animate-d2">
         <div class="room-icon">
-          <!-- Leek — saun -->
           <svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 3z"/></svg>
         </div>
         <p class="room-name">Terve maja + saun ja territoorium</p>
@@ -645,8 +747,19 @@
 </section>
 
 
-<!-- Kontakt ja kaart -->
 <section class="section">
+  <div class="inner">
+    <p class="section-eyebrow">✦ Pildid</p>
+    <h2 class="section-title">Galerii</h2>
+
+    <div class="gallery-filters" id="galleryFilters"></div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <p class="gallery-empty" id="galleryEmpty">Selles kategoorias pilte veel ei ole.</p>
+  </div>
+</section>
+
+
+<section class="section alt">
   <div class="inner">
     <p class="section-eyebrow">✦ Leia meid üles</p>
     <h2 class="section-title">Kontakt</h2>
@@ -660,7 +773,6 @@
           <path d="M20 26 Q25 22 27 17" stroke="#3a6b35" stroke-width="0.8" stroke-linecap="round"/>
         </svg>
 
-        <!-- E-post -->
         <div class="info-row">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -671,7 +783,6 @@
           </dl>
         </div>
 
-        <!-- Aadress -->
         <div class="info-row">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
@@ -682,7 +793,6 @@
           </dl>
         </div>
 
-        <!-- GPS -->
         <div class="info-row">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="9" stroke-dasharray="3 2"/></svg>
@@ -697,7 +807,6 @@
         </div>
       </div>
 
-      <!-- Kaart -->
       <div class="map-wrap animate animate-d1">
         <iframe
           title="Allika puhkemaja asukoht kaardil"
@@ -712,7 +821,6 @@
 </section>
 
 
-<!-- Jalus -->
 <footer>
   <svg class="footer-trees" width="600" height="70" viewBox="0 0 600 70" fill="none">
     <line x1="40"  y1="70" x2="40"  y2="26" stroke="#fff" stroke-width="3"/>
@@ -751,8 +859,130 @@
   <p>© <span id="year"></span> &nbsp;·&nbsp; info@sillaallika.ee &nbsp;·&nbsp; Koljaku küla, Lahemaa</p>
 </footer>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Sulge">&times;</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Eelmine">&#8249;</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-next" id="lightboxNext" aria-label="Järgmine">&#8250;</button>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const galleryData = [
+    { id: 'kahene',       label: '2-ne tuba',    prefix: '2ne-tuba',      count: 14 },
+    { id: 'kolmene',      label: '3-ne tuba',    prefix: '3ne-tuba',     count: 4  },
+    { id: 'sviit',        label: 'Sviit',        prefix: 'sviit',        count: 9  },
+    { id: 'saun',         label: 'Saun',         prefix: 'saun',         count: 13 },
+    { id: 'territoorium', label: 'Territoorium', prefix: 'territoorium', count: 5  },
+  ];
+
+  const IMG_BASE = 'images/gallery/';
+  const pad = n => n.toString().padStart(2, '0');
+
+  const allImages = [];
+  galleryData.forEach(cat => {
+    for (let i = 1; i <= cat.count; i++) {
+      allImages.push({
+        category: cat.id,
+        label: cat.label,
+        src: `${IMG_BASE}${cat.prefix}/${cat.prefix}-${pad(i)}.jpg`,
+        index: i
+      });
+    }
+  });
+
+  const filtersEl = document.getElementById('galleryFilters');
+  const filters = [{ id: 'all', label: 'Kõik' }, ...galleryData.map(c => ({ id: c.id, label: c.label }))];
+
+  filters.forEach((f, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = f.label;
+    btn.dataset.filter = f.id;
+    btn.addEventListener('click', () => setFilter(f.id));
+    filtersEl.appendChild(btn);
+  });
+
+  const gridEl = document.getElementById('galleryGrid');
+  const emptyEl = document.getElementById('galleryEmpty');
+
+  allImages.forEach((img, idx) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.dataset.category = img.category;
+    item.style.animationDelay = (idx % 12) * 0.03 + 's';
+
+    const image = document.createElement('img');
+    image.src = img.src;
+    image.alt = img.label;
+    image.loading = 'lazy';
+
+    item.appendChild(image);
+    item.addEventListener('click', () => openLightbox(img.category, img.index));
+    gridEl.appendChild(item);
+  });
+
+  function setFilter(filterId) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.filter === filterId);
+    });
+    let visibleCount = 0;
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const show = filterId === 'all' || item.dataset.category === filterId;
+      item.classList.toggle('hidden', !show);
+      if (show) visibleCount++;
+    });
+    emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  let currentSet = [];
+  let currentPos = 0;
+
+  function getActiveFilter() {
+    const activeBtn = document.querySelector('.filter-btn.active');
+    return activeBtn ? activeBtn.dataset.filter : 'all';
+  }
+
+  function openLightbox(category, index) {
+    const filterId = getActiveFilter();
+    currentSet = filterId === 'all' ? allImages : allImages.filter(i => i.category === filterId);
+    currentPos = currentSet.findIndex(i => i.category === category && i.index === index);
+    showLightboxImage();
+    lightbox.classList.add('open');
+  }
+
+  function showLightboxImage() {
+    const img = currentSet[currentPos];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.label;
+    lightboxCaption.textContent = `${img.label} — ${currentPos + 1} / ${currentSet.length}`;
+  }
+
+  function closeLightbox() { lightbox.classList.remove('open'); }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => {
+    currentPos = (currentPos - 1 + currentSet.length) % currentSet.length;
+    showLightboxImage();
+  });
+  document.getElementById('lightboxNext').addEventListener('click', () => {
+    currentPos = (currentPos + 1) % currentSet.length;
+    showLightboxImage();
+  });
+
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+    if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+  });
 </script>
 </body>
 </html>
