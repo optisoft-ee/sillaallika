@@ -785,6 +785,19 @@
 
         <div class="info-row">
           <div class="icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <dl class="info-body">
+            <dt>Telefon</dt>
+            <dd>
+              Suzanna: <a href="tel:+37256238105" style="color:var(--ink);text-decoration:none;">+372 5623 8105</a><br>
+              Jürgen: <a href="tel:+358400579034" style="color:var(--ink);text-decoration:none;">+358 40 057 9034</a>
+            </dd>
+          </dl>
+        </div>
+
+        <div class="info-row">
+          <div class="icon-wrap">
             <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
           </div>
           <dl class="info-body">
@@ -977,6 +990,24 @@
   });
 
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  let touchStartX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    const threshold = 50;
+    if (Math.abs(diff) < threshold) return;
+    if (diff > 0) {
+      document.getElementById('lightboxNext').click();
+    } else {
+      document.getElementById('lightboxPrev').click();
+    }
+  }, { passive: true });
 
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
